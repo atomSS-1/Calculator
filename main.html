@@ -1,9 +1,7 @@
 <html>
 
 <head>
-    <script>
 
-    </script>
     <style>
         #table {
             margin: 0 auto;
@@ -23,16 +21,22 @@
             cursor: text;
         }
     </style>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
+
     <div id="display">
 
     </div>
     <div>
         <table id="table">
             <tr>
-                <td><button id="one">1</button></td>
+                <td><button name="1" value="1" id="one">1</button></td>
                 <td><button id="two">2</button></td>
                 <td><button id="three">3</button></td>
                 <td><button id="multiply">*</button></td>
@@ -50,7 +54,7 @@
             <tr>
                 <td><button> </button></td>
                 <td><button id="zero">0</button></td>
-                <td><button id ="back">back</button></td>
+                <td><button id="back">back</button></td>
                 <td><button id="minus">-</button></td>
             </tr>
 
@@ -59,5 +63,18 @@
         </table>
     </div>
 </body>
+<script type="text/javascript">
+
+   
+
+    $("button").click(function () {
+        var fired_button = $(this).val();
+
+        alert(fired_button);
+       
+    })
+
+
+</script>
 
 </html>
