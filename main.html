@@ -2,28 +2,35 @@
 
 <head>
     <script>
-        document.getElementById("display").innerHTML = 5
+
     </script>
     <style>
-       
         #table {
             margin: 0 auto;
             width: 500px;
             height: 300px;
         }
-        button{
+
+        button {
             width: 100px;
             height: 100px;
+        }
+
+        #display {
+            padding: 70px 0;
+            border: 3px solid red;
+            text-align: center;
+            cursor: text;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <p id="display"></p>
+    <div id="display">
+
     </div>
     <div>
-        <table  id="table">
+        <table id="table">
             <tr>
                 <td><button id="one">1</button></td>
                 <td><button id="two">2</button></td>
@@ -43,7 +50,7 @@
             <tr>
                 <td><button> </button></td>
                 <td><button id="zero">0</button></td>
-                <td><button> </button></td>
+                <td><button id ="back">back</button></td>
                 <td><button id="minus">-</button></td>
             </tr>
 
