@@ -2,39 +2,49 @@
 
 <head>
     <script>
-
+        document.getElementById("display").innerHTML = 5
     </script>
     <style>
-        div {
-            align-items: center;
+       
+        #table {
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+        }
+        button{
+            width: 100px;
+            height: 100px;
         }
     </style>
 </head>
 
 <body>
     <div>
-        <table>
+        <p id="display"></p>
+    </div>
+    <div>
+        <table  id="table">
             <tr>
-                <td><button>1</button></td>
-                <td><button>2</button></td>
-                <td><button>3</button></td>
-                <td>*</td>
+                <td><button id="one">1</button></td>
+                <td><button id="two">2</button></td>
+                <td><button id="three">3</button></td>
+                <td><button id="multiply">*</button></td>
             </tr>
             <tr>
-                <td><button>4</button></td>
-                <td><button>5</button></td>
-                <td><button>6</button></td>
-                <td>/</td>
+                <td><button id="four">4</button></td>
+                <td><button id="five">5</button></td>
+                <td><button id="six">6</button></td>
+                <td><button id="divide">/</button></td>
             </tr>
-            <td><button>7</button></td>
-            <td><button>8</button></td>
-            <td><button>9</button></td>
-            <td>+</td>
+            <td><button id="seven">7</button></td>
+            <td><button id="eight">8</button></td>
+            <td><button id="nine">9</button></td>
+            <td><button id="plus">+</button></td>
             <tr>
                 <td><button> </button></td>
-                <td><button>0</button></td>
+                <td><button id="zero">0</button></td>
                 <td><button> </button></td>
-                <td>-</td>
+                <td><button id="minus">-</button></td>
             </tr>
 
 
