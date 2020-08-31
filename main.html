@@ -36,26 +36,32 @@
     <div>
         <table id="table">
             <tr>
-                <td><button name="1" value="1" id="one">1</button></td>
-                <td><button id="two">2</button></td>
-                <td><button id="three">3</button></td>
-                <td><button id="multiply">*</button></td>
+                <td><button value="1" class="number_operator">1</button></td>
+                <td><button value="2" class="number_operator">2</button></td>
+                <td><button value="3" class="number_operator">3</button></td>
+                <td><button value="*" class="number_operator" id="multiply">*</button></td>
             </tr>
             <tr>
-                <td><button id="four">4</button></td>
-                <td><button id="five">5</button></td>
-                <td><button id="six">6</button></td>
-                <td><button id="divide">/</button></td>
+                <td><button value="4" class="number_operator">4</button></td>
+                <td><button value="5" class="number_operator">5</button></td>
+                <td><button value="6" class="number_operator">6</button></td>
+                <td><button value="/" class="number_operator" id="divide">/</button></td>
             </tr>
-            <td><button id="seven">7</button></td>
-            <td><button id="eight">8</button></td>
-            <td><button id="nine">9</button></td>
-            <td><button id="plus">+</button></td>
+            <td><button value="7" class="number_operator">7</button></td>
+            <td><button value="8" class="number_operator">8</button></td>
+            <td><button value="9" class="number_operator">9</button></td>
+            <td><button value="+" class="number_operator" id="plus">+</button></td>
             <tr>
-                <td><button> </button></td>
-                <td><button id="zero">0</button></td>
-                <td><button id="back">back</button></td>
-                <td><button id="minus">-</button></td>
+                <td><button value="=" id ="equal">=</button></td>
+                <td><button value="0" class="number_operator">0</button></td>
+                <td><button value="back" id="back">back</button></td>
+                <td><button value="-" class="number_operator" id="minus">-</button></td>
+            </tr>
+            <tr>
+                <td><button value="AC" id = "ac" >AC</button></td>
+                <td><button></button></td>
+                <td><button></button></td>
+                <td><button></button></td>
             </tr>
 
 
@@ -63,17 +69,69 @@
         </table>
     </div>
 </body>
+
 <script type="text/javascript">
 
-   
-
-    $("button").click(function () {
-        var fired_button = $(this).val();
-
-        alert(fired_button);
+    //버튼 클릭시 value를 얻어 id = display div tag 에 넣어준다
+    var previous_button; // 전에 클릭햇던 값
+    var fired_button 
+    $('.number_operator').click(function(){
+        fired_button = $(this).val();//각각 버튼 tag의 값을 받아온다
        
+        if (previous_button == null) {// 처음 눌럿을때
+            $('#display').html(fired_button)
+        }
+        else if ((previous_button != null) && previous_button != '0') {// 1번째 이상 눌럿을때 && previous_button이 0이 아닐때
+            fired_button = previous_button + fired_button// firedbutton 값을 누적시킨다
+            $('#display').html(fired_button) // display에 보여준다
+        }
+        else if ((previous_button != null) && previous_button == '0') {// 1번째 이상 눌럿을때 && previous_button이 0일떄
+            //아무것도 하지 않는다.
+        }
+        previous_button = fired_button
     })
+   
+    $('#equal').click(function(){//연산 처리를 한다
+        var totalstr =fired_button// id =display의 원소값을 가져온다
+        var result = null;
+        var value = totalstr.split(/(['*']|['/']|['-']|['+'])/);//연산자 기준으로 string 값을 나눈다
+        
+        if(value[1] == '*'){
+    
+            result = Number(value[0]) * Number(value[2])
+        }
+        else if(value[1] == "/"){
+            result = Number(value[0]) / Number(value[2])
+        }
+        else if(value[1] == "+"){
+            result = Number(value[0]) + Number(value[2])
+        }
+        else if(value[1] == "-"){
+            result = Number(value[0]) - Number(value[2])
+        }
+      
+        fired_button = result// 결과 값을 fired_button에 저장한다.
+        $('#display').html(result)// 결과 값을 출력 한다.
+        
 
+    })
+    $('#ac').click(function(){//ac를 눌럿을 경우 모든 값을 초기화한다.
+        previous_button = 0;
+        fired_button = 0;
+        $('#display').html(0)
+    })
+    $('#back').click(function(){//back 키 기능 구현
+        let value =String(fired_button)//string값으로 변경한다
+        if(value == ''){//빈 값일 경우
+        $("#display").html(0) //0으로 초기화한다
+        previous_button = 0;// 0으로 초기화한다
+        fired_button = 0//0으로 초기화 한다.
+        }else{
+        value = value.slice(0,-1)// 뒤에서 하나 지운다
+        fired_button = value//지운 값을 다시 fired button에 저장한다
+        $("#display").html(value)
+        }
+    })
 
 </script>
 
