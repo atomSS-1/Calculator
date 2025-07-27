@@ -12,3 +12,8 @@
    Result: unexpected calulation of numbers.
 
    Solution: Use Tsx.
+
+# Try it with React.js
+# Try it with Cordova
+# Try it with Jsx
+# Try it with Tsx
